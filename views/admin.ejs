@@ -1,0 +1,43 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-primary fw-bold">Admin Panel</h1>
+    <a href="/admin/create" class="btn btn-success btn-lg shadow-sm">+ Create New User</a>
+  </div>
+
+  <!-- Table for user list -->
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (users.length > 0) { %>
+          <% users.forEach((user, index) => { %>
+            <tr>
+              <td class="text-center"><%= index + 1 %></td>
+              <td><%= user.username %></td>
+              <td class="text-center">
+                <a href="/admin/edit/<%= user._id %>" class="btn btn-warning btn-sm shadow-sm">
+                  <i class="bi bi-pencil-square"></i> Edit
+                </a>
+                <a href="/admin/delete/<%= user._id %>" 
+                   class="btn btn-danger btn-sm shadow-sm" 
+                   onclick="return confirm('Are you sure?')">
+                  <i class="bi bi-trash"></i> Delete
+                </a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="3" class="text-center text-muted">No users found</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

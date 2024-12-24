@@ -1,0 +1,46 @@
+<div class="card bg-white shadow-sm" style="width: 20rem; border-radius: 10px; margin: auto;">
+  <div class="card-body p-4">
+    <h5 class="card-title text-center fs-2 text-primary fw-bold mb-4">Login</h5>
+    <form action="/login" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label fw-semibold">Username</label>
+        <input
+          type="text"
+          class="form-control border-primary"
+          id="username"
+          name="username"
+          required
+          style="border-radius: 8px;"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <input
+          type="password"
+          class="form-control border-primary"
+          id="password"
+          name="password"
+          required
+          style="border-radius: 8px;"
+        />
+      </div>
+      <div class="d-flex justify-content-around align-items-center mt-4">
+        <button
+          type="submit"
+          class="btn btn-success px-4 py-2"
+          style="border-radius: 5px; font-weight: bold;"
+        >
+          Let's Go
+        </button>
+        <span class="text-secondary fw-semibold">OR</span>
+        <a
+          href="/register"
+          class="btn btn-primary px-4 py-2"
+          style="border-radius: 5px; font-weight: bold;"
+        >
+          Register
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

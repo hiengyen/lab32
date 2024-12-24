@@ -1,0 +1,70 @@
+<div class="card shadow-sm border-0 bg-light" style="width: 22rem; margin: auto; border-radius: 10px;">
+  <div class="card-body p-4">
+    <h3 class="text-center text-primary fw-bold mb-4">Create User</h3>
+    <form id="createUserForm" action="/create" method="POST">
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control border-primary shadow-sm"
+          id="username"
+          name="username"
+          placeholder="Enter username"
+          required
+        />
+      </div>
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control border-primary shadow-sm"
+          id="password"
+          name="password"
+          placeholder="Enter password"
+          required
+        />
+      </div>
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label for="confirmPwd" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control border-primary shadow-sm"
+          id="confirmPwd"
+          name="confirmPwd"
+          placeholder="Re-enter password"
+          required
+        />
+      </div>
+      <!-- Role -->
+      <div class="mb-4">
+        <label for="role" class="form-label">Role</label>
+        <select id="role" class="form-select border-primary shadow-sm" name="role">
+          <option value="user" selected>User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <!-- Buttons -->
+      <div class="d-flex justify-content-around align-items-center">
+        <button type="submit" class="btn btn-success shadow-sm px-4">Create</button>
+        <span class="text-muted">OR</span>
+        <a href="/admin" class="btn btn-danger shadow-sm px-4">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('createUserForm');
+  const passwordField = document.getElementById('password');
+  const confirmPwdField = document.getElementById('confirmPwd');
+
+  form.addEventListener('submit', function(event) {
+    if (passwordField.value !== confirmPwdField.value) {
+      alert('Passwords do not match!');
+      event.preventDefault(); // Stop form submission
+    }
+  });
+</script>

@@ -1,0 +1,69 @@
+<div class="card shadow-sm border-0 bg-light" style="width: 22rem; margin: auto; border-radius: 10px;">
+  <div class="card-body p-4">
+    <h5 class="card-title text-center fs-3 text-primary fw-bold mb-4">Edit User</h5>
+    <form id="editUserForm" action="/update" method="POST">
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          value="<%= user.username %>"
+          class="form-control border-primary shadow-sm"
+          id="username"
+          name="username"
+          placeholder="Enter username"
+          required
+        />
+      </div>
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control border-primary shadow-sm"
+          id="password"
+          name="password"
+          placeholder="Enter new password"
+        />
+      </div>
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label for="confirmPwd" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control border-primary shadow-sm"
+          id="confirmPwd"
+          name="confirmPwd"
+          placeholder="Re-enter password"
+        />
+      </div>
+      <!-- Role -->
+      <div class="mb-4">
+        <label for="role" class="form-label">Role</label>
+        <select id="role" class="form-select border-primary shadow-sm" name="role">
+          <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+          <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+        </select>
+      </div>
+      <!-- Buttons -->
+      <div class="d-flex justify-content-around align-items-center">
+        <button type="submit" class="btn btn-success px-4 shadow-sm">Update</button>
+        <span class="text-muted fw-bold">OR</span>
+        <a href="/admin" class="btn btn-danger px-4 shadow-sm">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("editUserForm");
+  const passwordField = document.getElementById("password");
+  const confirmPwdField = document.getElementById("confirmPwd");
+
+  form.addEventListener("submit", function (event) {
+    if (passwordField.value !== confirmPwdField.value) {
+      alert("Passwords do not match!");
+      event.preventDefault(); // Ngừng gửi form
+    }
+  });
+</script>

@@ -1,0 +1,74 @@
+<div class="card bg-white shadow-sm" style="width: 22rem; border-radius: 10px; margin: auto;">
+  <div class="card-body p-4">
+    <h5 class="card-title text-center text-primary fw-bold mb-4">Register</h5>
+    <form id="registerForm" action="/register" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label fw-semibold">Username</label>
+        <input
+          type="text"
+          class="form-control border-primary"
+          id="username"
+          name="username"
+          required
+          style="border-radius: 8px;"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <input
+          type="password"
+          class="form-control border-primary"
+          id="password"
+          name="password"
+          required
+          style="border-radius: 8px;"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="confirmPwd" class="form-label fw-semibold">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control border-primary"
+          id="confirmPwd"
+          name="confirmPwd"
+          required
+          style="border-radius: 8px;"
+        />
+        <small id="errorMsg" class="text-danger d-none">Passwords do not match!</small>
+      </div>
+      <div class="d-flex justify-content-around align-items-center mt-4">
+        <button
+          type="submit"
+          class="btn btn-success px-4 py-2"
+          style="border-radius: 5px; font-weight: bold;"
+        >
+          Register
+        </button>
+        <span class="text-secondary fw-semibold">OR</span>
+        <a
+          href="/login"
+          class="btn btn-primary px-4 py-2"
+          style="border-radius: 5px; font-weight: bold;"
+        >
+          Log in
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('registerForm');
+  const passwordField = document.getElementById('password');
+  const confirmPwdField = document.getElementById('confirmPwd');
+  const errorMsg = document.getElementById('errorMsg');
+
+  form.addEventListener('submit', function(event) {
+    if (passwordField.value !== confirmPwdField.value) {
+      errorMsg.classList.remove('d-none');
+      event.preventDefault(); // Ngừng gửi form nếu có lỗi
+    } else {
+      errorMsg.classList.add('d-none');
+    }
+  });
+</script>
