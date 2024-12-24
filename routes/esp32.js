@@ -6,7 +6,7 @@ let commands = {};
 router.use(bodyParser.json());
 
 router.get("/publish", (req, res) => {
-  const deviceId = req.query.device_id;  
+  const deviceId = req.query.device_id;
   if (deviceId && commands[deviceId]) {
     res.send(commands[deviceId]);
     commands[deviceId] = "";
